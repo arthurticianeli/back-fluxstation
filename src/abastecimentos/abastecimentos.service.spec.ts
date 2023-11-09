@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { fakeAbastecimentos } from 'src/users/users.service.spec';
 import { PrismaService } from '../prisma/prisma.service';
 import { AbastecimentosService } from './abastecimentos.service';
 
@@ -12,44 +13,8 @@ export const fakeAbastecimentosCreate = {
   userId: 1,
 };
 
-export const fakeAbastecimentos = [
-  {
-    id: 1,
-    litros: '50',
-    combustivel: 'Gasolina',
-    valorTotal: 100,
-    abastecimentoId: 1,
-    createdAt: '2023-11-05T12:30:00.000Z',
-  },
-  {
-    id: 2,
-    litros: '30',
-    combustivel: 'Álcool',
-    valorTotal: 70,
-    abastecimentoId: 2,
-    createdAt: '2023-11-06T10:15:00.000Z',
-  },
-];
-
-export const fakeUser = [
-  {
-    id: 1,
-    name: 'Usuário 1',
-    email: 'usuario1@example.com',
-    password: 'senha1',
-    abastecimentos: fakeAbastecimentos,
-  },
-  {
-    id: 2,
-    name: 'Usuário 2',
-    email: 'usuario2@example.com',
-    password: 'senha2',
-    abastecimentos: fakeAbastecimentos,
-  },
-];
-
 const prismaMock = {
-  abastecimento: {
+  abastecimentos: {
     create: jest.fn().mockReturnValue(fakeAbastecimentos[0]),
     findMany: jest.fn().mockResolvedValue(fakeAbastecimentos),
     findUnique: jest.fn().mockResolvedValue(fakeAbastecimentos[0]),
@@ -121,7 +86,7 @@ describe('AbastecimentosService', () => {
       expect(response).toBe(fakeAbastecimentos[0]);
       expect(prisma.abastecimentos.create).toHaveBeenCalledTimes(1);
       expect(prisma.abastecimentos.create).toHaveBeenCalledWith({
-        data: fakeAbastecimentos[0],
+        data: { ...fakeAbastecimentos[0], abastecimentoId: 1 },
       });
     });
   });

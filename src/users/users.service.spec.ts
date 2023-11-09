@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from '../prisma/prisma.service';
 import { UsersService } from './users.service';
 
-export const abastecimentos = [
+export const fakeAbastecimentos = [
   {
     id: 1,
     litros: '50',
@@ -27,14 +27,14 @@ export const fakeUsers = [
     name: 'Usuário 1',
     email: 'usuario1@example.com',
     password: 'senha1',
-    abastecimentos: abastecimentos,
+    abastecimentos: fakeAbastecimentos,
   },
   {
     id: 2,
     name: 'Usuário 2',
     email: 'usuario2@example.com',
     password: 'senha2',
-    abastecimentos: abastecimentos,
+    abastecimentos: fakeAbastecimentos,
   },
 ];
 
