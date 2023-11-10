@@ -61,7 +61,7 @@ Os end-points desenvolvidos foram:
   - User => "/user"
   - Abastecimentos => "/abastecimentos"
 
-    * Após rodar o backend, acessar a url http://localhost:3000/api/ para visualizar o Swagger.
+    * Após rodar o backend, acessar a url [http://localhost:3000/api/](http://localhost:3010/api/) para visualizar o Swagger.
 
 Apesar de ter feito todo o CRUD para cada end-point, somente utilizei no front o que foi necessário para preencher os requisitos:
 
